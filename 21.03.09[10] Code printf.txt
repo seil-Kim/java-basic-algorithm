@@ -1,0 +1,16 @@
+package chap2;
+
+import java.util.*;
+
+public class code {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		
+		System.out.print("문자를 입력하세요 >> ");
+		char in = scanner.nextLine().charAt(0);
+		System.out.printf("문자 %s의 코드는 %d입니다\n\n", in, (int)in);
+		
+	}
+
+}
