@@ -1,0 +1,16 @@
+package chap2;
+
+public class LiteralTest {
+
+	public static void main(String[] args) {
+		
+		double a = 3.0e3;
+		double b = 3.0e-1;
+		double c = 0x21p2;
+		
+		System.out.println("3.0e3 = " +a);
+		System.out.println("3.0e-1 = " +b);
+		System.out.println("0x21p2 = " +c);
+	}
+
+}
