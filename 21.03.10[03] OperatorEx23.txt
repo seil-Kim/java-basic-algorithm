@@ -1,0 +1,17 @@
+package chap3;
+
+public class OperatorEx23 {
+
+	public static void main(String[] args) {
+		String str1 = "abc";
+		String strC = new String("abc");
+		String str2 = strC;
+		String str3 = "ABC";
+		
+		System.out.printf("str1 == str2 ? %b\n", str1 == str2);
+		System.out.printf("str1.equals(str2) ? %b\n", str1.equals(str2));
+		System.out.printf("str1.equals(str3) ? %b\n", str1.equals(str3));
+		System.out.printf("str1.equalsIgnoreCase(str3) ? %b\n", str1.equalsIgnoreCase(str3));		
+	}
+
+}
