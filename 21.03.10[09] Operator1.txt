@@ -1,0 +1,27 @@
+package chap3;
+
+import java.util.*;
+
+public class TrueFalse2 {
+
+	public static void main(String[] args) {
+		
+			Scanner scanner = new Scanner(System.in);
+			
+			System.out.print("금액을 입력하세요 >> ");
+			int won = scanner.nextInt();
+						
+			int x = won / 50000;
+			won %= 50000;
+			int y = won / 10000;
+			won %= 10000;
+			int a = won / 5000;
+			won %= 5000;
+			int b = won / 1000;
+			won %= 1000;
+						
+			System.out.printf("50000원권 : %d장, 10000원권 : %d장, 5000원권 : %d장, 1000원권 : %d장", x, y, a, b);
+
+	}
+
+}//won의 값을 그대로 두고 하려면 temp를 쓰자.
