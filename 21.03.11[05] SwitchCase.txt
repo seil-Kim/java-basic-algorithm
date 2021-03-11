@@ -1,0 +1,31 @@
+package chap4;
+
+import java.util.*;
+
+public class SwitchCase {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("나라명과 금액을 입력하세요 >> ");
+		String country = scanner.next();
+		int money = scanner.nextInt();
+		
+		double rate = 0;
+		String dan = " ";
+		switch(country) {
+		case "미국":
+			rate = 1120; dan = "달러"; break;
+		case "중국":
+			rate = 163; dan = "위안"; break;
+		case "일본":
+			rate = 10.35; dan = "엔"; break;
+		default:
+			System.out.println("나라명 오류입니다");;
+			System.exit(0);
+		}
+		int won = (int)(money * rate);
+		System.out.printf("%d%s은 %d원 입니다 \n\n", money, dan, won);
+		
+	}
+
+}
