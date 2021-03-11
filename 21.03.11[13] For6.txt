@@ -1,0 +1,18 @@
+package chap4;
+
+public class for6 {
+
+	public static void main(String[] args) {
+		int count = 0;
+		
+		for(int i = 1; i <=100; i++ ){
+			if(i % 2 == 0 || i % 3 == 0) {
+				System.out.printf("%2d\n", i);
+				count++;
+			}
+		}
+		System.out.printf("갯수는 %2d개", count);
+
+	}
+
+}
