@@ -1,0 +1,30 @@
+package chap4;
+
+import java.util.*;
+
+public class while6 {
+
+	public static void main(String[] args) {
+		int no, kor, eng, su, korSum, engSum, suSum, cnt;
+		korSum = engSum = suSum = cnt = 0;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			System.out.print("번호를 입력하세요 >> ");
+			no = scanner.nextInt();
+			if(no == 0) {
+				break;
+			}
+			System.out.printf("%d번의 국어, 영어, 수학 점수를 입력하세요 >> ", no);
+			kor = scanner.nextInt();
+			eng = scanner.nextInt();
+			su = scanner.nextInt();
+			korSum += kor;
+			engSum += eng;
+			suSum += su;
+			cnt++;
+		}
+		System.out.printf("국어평균 : %d, 영어평균 : %d, 수학평균 : %d\n", korSum/cnt, engSum/cnt, suSum/cnt);
+	}
+
+}
