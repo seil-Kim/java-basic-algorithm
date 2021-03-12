@@ -1,0 +1,25 @@
+package chap4;
+
+import java.util.*;
+
+public class while2 {
+
+	public static void main(String[] args) {
+		int num = 0;
+		int sum = 0;
+		
+		System.out.print("숫자를 입력하세요. (예 : 12345);>");
+		Scanner scanner = new Scanner(System.in);
+		num = scanner.nextInt();
+		
+		while(num != 0) {
+			// num을 10으로 나눈 나머지를 sum에 더함
+			sum += num % 10;
+			System.out.printf("%d", num % 10);
+			num /= 10; // num을 10으로 나눈 값을 다시 num에 저장
+			if(num != 0) System.out.print(" + ");
+		}
+		System.out.println(" = "+ sum);
+	}
+
+}
