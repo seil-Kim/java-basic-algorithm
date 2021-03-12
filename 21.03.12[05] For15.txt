@@ -1,0 +1,22 @@
+package chap4;
+
+public class for15 {
+
+	public static void main(String[] args) {
+		
+		int x = 3;
+		int y = 5;
+		int z = 7;
+		int sum = 0;
+				
+		for(int i = 0; i <= 10; i++) {
+			for(int j = 0; j <= 10; j++) 
+				for(int n = 0; n <= 10; n++) {
+					sum = (x * i)+(y * j)+(z * n);
+					if(sum == 78)						
+				System.out.printf("3g 의 추 : %d 개, 5g 의 추 : %d 개, 7g 의 추 : %d 개\n", i, j, n );
+				}
+		}
+	}
+
+}
