@@ -1,0 +1,32 @@
+package chap4;
+
+import java.util.*;
+
+public class while3 {
+
+	public static void main(String[] args) {
+		int num = 0;
+		int sum = 0;
+		int cnt = 0;
+		String str = "";
+		
+		System.out.print("숫자를 입력하세요. (예 : 12345);>");
+		Scanner scanner = new Scanner(System.in);
+		num = scanner.nextInt();
+		
+		while(num != 0) {
+			// num을 10으로 나눈 나머지를 sum에 더함
+			sum += num % 10;
+			str += (char)num%10;
+			num /= 10; // num을 10으로 나눈 값을 다시 num에 저장
+			cnt++;
+		}
+		for(int i = cnt-1; i >= 0; i--) {
+		System.out.print(str.charAt(i));
+		if(i > 0)
+			System.out.print(" + ");
+		}
+		System.out.println(" = "+sum);
+	}
+
+}
