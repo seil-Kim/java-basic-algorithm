@@ -1,0 +1,21 @@
+package chap4;
+
+public class for18 {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+				
+		for(int g3 = 0; g3 <= 10; g3++) {
+			for(int g5 = 0; g5 <= 10; g5++) {
+				for(int g7 = 0; g7 <= 10; g7++) {
+					sum = (g3 * 3)+(g5 * 5)+(g7 * 7);
+					if(sum == 78) {					
+				System.out.printf("3g 의 추 : %d 개, 5g 의 추 : %d 개, 7g 의 추 : %d 개\n", g3, g5, g7 );
+				break;
+			}
+		}
+	}
+}
+}
+}
