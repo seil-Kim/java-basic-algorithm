@@ -1,0 +1,26 @@
+package chap5;
+
+import java.util.Arrays;
+
+public class array5 {
+
+	public static void main(String[] args) {
+		
+		int max = 0, min = 100;
+		int[] num = {23, 42, 62, 74, 85, 48, 19, 88, 92, 71};
+		
+		for(int i = 0; i < num.length; i++)
+		{
+			System.out.printf("%d, ", num[i]);
+			
+			if(max < num[i])
+				max = num[i];
+			else if(min > num[i])
+				min = num[i];			
+		}
+		System.out.printf("\n최대값은 %d, 최소값은 %d 입니다", max, min);
+		
+
+	}
+
+}
