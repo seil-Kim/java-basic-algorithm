@@ -1,0 +1,24 @@
+package chap5;
+
+import java.util.Arrays;
+
+public class array14 {
+
+	public static void main(String[] args) {
+
+		int[] num = {23, 42, 62, 74, 85, 48, 19, 88, 92, 71};
+		int[] rank = new int[10];
+		
+		for(int i = 0; i < num.length; i++) {
+			rank[i] = 1;
+			for(int j = 0; j < num.length; j++) {
+				if(num[i] < num[j]) {
+					rank[i]++;
+				}
+			}
+		}
+		System.out.println("점수 : " + Arrays.toString(num));
+		System.out.println("석차 : " + Arrays.toString(rank));
+	}
+
+}
