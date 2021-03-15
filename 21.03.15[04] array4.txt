@@ -1,0 +1,23 @@
+package chap5;
+
+import java.util.Arrays;
+
+public class array4 {
+
+	public static void main(String[] args) {
+		
+		int sum = 0, ave = 0;
+		int[] num = {23, 42, 62, 74, 85, 48, 19, 88, 92, 71};
+		
+		for(int i = 0; i < num.length; i++)
+		{
+			System.out.printf("%d, ", num[i]);
+			sum += num[i];
+			
+		}
+		System.out.printf("\n합계는 %d, 평균은 %4.1f 입니다", sum, (float)sum / num.length);
+		
+
+	}
+
+}
