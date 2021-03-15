@@ -1,0 +1,25 @@
+package chap5;
+
+import java.util.Arrays;
+
+public class array9 {
+
+	public static void main(String[] args) {
+
+		int[] num = {23, 42, 62, 74, 85, 48, 19, 88, 92, 71};
+		int temp;
+		
+		System.out.println("정렬 전 : " + Arrays.toString(num));
+		
+		for(int i = 0; i < num.length - 1; i++) {
+			for(int j = i+1; j < num.length; j++) {
+				if(num[i] > num[j]) {
+					temp = num[i];
+					num[i] = num[j];
+					num[j] = temp;
+				}
+			}
+		}
+		System.out.println("정렬 후 : "+ Arrays.toString(num));
+	}
+} // 선택정렬
