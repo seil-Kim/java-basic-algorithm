@@ -1,0 +1,24 @@
+package chap5;
+
+public class MultiDimensional4 {
+
+	public static void main(String[] args) {
+		
+		int sum = 1;
+
+		int[][] arr = new int[5][5];
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				arr[i][j] = sum++;
+			}
+		}
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				System.out.printf("%3d", arr[j][i]);
+			}
+			System.out.println();
+		}
+
+	}
+
+}
