@@ -1,0 +1,26 @@
+package chap5;
+
+import java.util.*;
+
+public class array19 {
+
+	public static void main(String[] args) {
+		
+		int[] binary = new int[8];
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("100이하의 10진수를 입력하세요 >> ");
+		int num = scanner.nextInt();
+		int i = -1;
+		
+		while(num > 0) {
+			i++;
+			binary[i] = num % 2;
+			num /= 2;
+		}
+		for(int j = i; j >= 0; j--) {
+			System.out.print(binary[j]);
+		}
+		System.out.println();
+		}
+	}
