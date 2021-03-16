@@ -1,0 +1,17 @@
+package chap5;
+
+public class array17 {
+
+	public static void main(String[] args) {
+
+		int[] num = {1, 4, 3, 4, 4, 3, 4, 4, 2, 4, 3, 1, 4, 1, 4, 4, 1, 3, 4, 1, 2, 1};
+		int[] ans = new int[5];
+		
+		for(int i = 0; i < num.length; i++) {
+			ans[num[i]]++;
+		}
+		for(int n = 1; n <= 4; n++)
+			System.out.printf("%d : %d \n", n, ans[n]);
+	}
+
+}
