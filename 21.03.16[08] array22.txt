@@ -1,0 +1,33 @@
+package chap5;
+
+public class array22 {
+
+	public static void main(String[] args) {
+
+		int[] kor = {89, 70, 99, 80, 60};
+		int[] eng = {98, 87, 75, 68, 66};
+		int[] su = {100, 76, 89, 90, 80};
+		String name[] = {"홍길동", "김지수", "정안나", "이지원", "지성용"};
+		int korTotal = 0, engTotal = 0, suTotal = 0;
+		
+		System.out.println("번호     이름     국어     영어     수학     총점     평균");
+		System.out.println("=====================================");
+		
+		for(int i = 0; i < name.length; i++)
+		{
+			int sum = 0; // 개인별 총점
+			float avg = 0.0f; // 개인별 평균
+			
+			korTotal += kor[i];
+			engTotal += eng[i];
+			suTotal += su[i];
+			
+			sum = kor[i] + eng[i] + su[i];
+			avg = sum/3f; // 평균계산
+			System.out.printf("%3d%5s%6d%5d%5d%5d%6.1f%n", i+1, name[i], kor[i], eng[i], su[i], sum, avg);
+		}
+		System.out.println("=====================================");
+		System.out.printf("    평균 :   %4d %4d %4d\n\n", korTotal / name.length, engTotal / name.length, suTotal / name.length);
+	}
+
+}
