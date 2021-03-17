@@ -1,0 +1,49 @@
+package chap5;
+
+import java.util.*;
+
+public class MultiDimensional10 {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String[][] words = {
+				{"chair", "의자"}, // words[0][0], words[0][1]
+				{"computer", "컴퓨터"}, // words[1][0], words[1][1]
+				{"integer", "정수"}, // words[2][0], words[2][1]
+		};
+
+		int[] ran = new int[words.length];
+		int idx = 0;
+		
+		int cnt = 0;
+		System.out.println("지금부터 영어 단어 맞추기 게임을 시작합니다\n");
+		System.out.print("1. (영어를 -> 한글로), 2. (한글을 -> 영어로) 중 선택 ?");
+		int ch = Integer.parseInt(scanner.nextLine());
+		int q, a;
+		if(ch == 1) {
+			q = 0; a = 1;
+		} else {
+			q = 1; a = 0;
+		}
+		for(int i = 0; i < words.length; i++) {
+			do {
+				idx = (int)(Math.random() * 3);
+			} while (ran[idx] != 0);
+			ran[idx] = 1;
+			
+			System.out.printf("Q%d. %s의 뜻은?", i + 1, words[idx][q]);
+			
+			String tmp = scanner.nextLine();
+			
+			if(tmp.equals(words[idx][a])) {
+				cnt++;
+				System.out.printf("정답입니다.%n%n");
+			} else {
+				System.out.printf("틀렸습니다. 정답은 %s 입니다. %n%n", words[idx][a]);
+			}
+		}
+		System.out.printf("전체 %d문제중에 %d개 맞추었습니다\n", words.length, cnt);
+	}
+
+}
