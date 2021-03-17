@@ -1,0 +1,33 @@
+package chap5;
+
+import java.util.*;
+
+public class MultiDimensional11 {
+
+	public static void main(String[] args) {
+		int r = 0;
+		int[] seatT = new int[12];
+		String[] name = {"홍길동", "김지수", "정안나", "하희라", "한민수", "장길순", "응봉순", "박철원",
+						"원종근", "이미나", "한지원", "지성용"};
+		for(int n = 0; n < 12; n++) {
+			do {
+				r = new Random().nextInt(12);
+			} while(seatT[r]>0);
+			seatT[r] = n;
+		}
+		System.out.println("\t\t\t*********** 좌석 배치표 ***************\n");
+		System.out.println("\t---------------------------------------------------------------");
+		for(int i = 1; i <= 4; i++) {
+			System.out.printf("\t%5d열\t", i);
+		}
+		System.out.println("\n\t---------------------------------------------------------------");
+		int n = 0;
+		for (r = 0; r < 12; r++) {
+			n = seatT[r];
+			System.out.printf("\t%02d번 : %s", n + 1, name[n]);
+			if(r%4 == 3) System.out.println(" ");
+		}
+		System.out.println("\t---------------------------------------------------------------");
+	}
+	
+}
