@@ -1,0 +1,42 @@
+package chap5;
+
+import java.util.*;
+
+public class MultiDimensional12 {
+
+	public static void main(String[] args) {
+		int sum = 0;
+		float avg = 0;
+		int i = 0, j = 0;
+		
+		int[][] score = {{89, 98, 100},
+						{70, 87, 76},
+						{99, 75, 89},
+						{80, 68, 90},
+						{60, 66, 80}};
+		String name[] = {"홍길동", "김지수", "정안나", "이지원", "지성용"};
+		
+		int[] total = new int[3]; // 과목별 총점 누적용
+
+		System.out.print("\t번호\t이름\t국어\t영어\t수학\t총점\t평균\n");
+		System.out.print("\t===================================================\n");
+		
+		for(i=0; i<score.length; i++) {
+			sum = 0;
+			System.out.printf("\t%3d\t%5s", i+1, name[i]);
+			for(j=0; j<score[i].length; j++) {
+				sum += score[i][j];
+				total[j] += score[i][j];
+				
+		System.out.printf("\t%5d", score[i][j]);
+		}
+			avg = ((float)sum/score[i].length);
+		System.out.printf("\t%5d \t%5.1f\n", sum, avg);
+		}
+		System.out.print("\t===================================================\n");
+		System.out.print("\t\t<평균>");
+		for(i = 0; i < score[i].length; i++)
+			System.out.printf("\t%5d", total[i]/score.length);
+		}
+		
+	}
