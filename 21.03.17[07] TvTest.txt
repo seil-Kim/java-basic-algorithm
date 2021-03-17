@@ -1,0 +1,31 @@
+package Chap6;
+
+public class TvTest {
+
+	public static void main(String[] args) {
+
+		Tv t1 = new Tv(); // Tv t1; t1 = new Tv();를 한 문장으로 가능
+		Tv t2 = new Tv("white", true, 11);
+		Tv t3 = new Tv("black", true, 27);
+		System.out.println("Tv t1 : ");;
+		t1.printInfo();
+		System.out.println("Tv t2 : ");;
+		t2.printInfo();
+		System.out.println("Tv t3 : ");;
+		t3.printInfo();
+		
+		t1.channel = 7; // channel 값을 7으로 한다.
+		System.out.println("채널 변경후 Tv t1 : ");
+		t1.printInfo();
+
+		t2.channelUp();
+		System.out.println("채널 변경후 Tv t2 : ");
+		t2.printInfo();
+		
+		t3.channel = 50;
+		System.out.println("채널 변경후 Tv t3 : ");
+		t3.printInfo();
+		
+	}
+
+}
