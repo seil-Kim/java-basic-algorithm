@@ -1,0 +1,25 @@
+package Chap6;
+
+//고객정보
+class cusInfo {
+	String customer; // 고객번호
+	String name; // 고객이름
+	String tel; // 고객전화
+	int point; // 랜트포인트
+}
+
+//차량정보
+class carInfo {
+	String carCode; // 차량코드
+	String carKind; // 차량종류
+	String rentYN; // 랜트여부
+	String date; // 랜트일자
+}
+
+//결재정보
+class Rent { 
+	String rentNo; // 몇번째 거래
+	String customer; // 고객번호
+	int amount; //액수
+	String cardYN; // 카드?
+}
