@@ -1,0 +1,47 @@
+package Chap6;
+
+public class TvTest {
+
+	public static void main(String[] args) {
+
+		Tv[] tvArr = new Tv[4]; // Tv t1; t1 = new Tv();를 한 문장으로 가능
+				
+		tvArr[0] = new Tv(); // Tv t1; t1 = new Tv();를 한 문장으로 가능
+		tvArr[1] = new Tv("Red", 20);
+		tvArr[2] = new Tv("white");
+		tvArr[3] = new Tv();
+		
+		System.out.println("Tv t1 : ");;
+		tvArr[0].printInfo();
+		System.out.println("Tv t2 : ");;
+		tvArr[1].printInfo();
+		System.out.println("Tv t3 : ");
+		tvArr[2].printInfo();
+		System.out.println("Tv t4 : ");
+		tvArr[3].printInfo();
+		tvArr[0].channel = 7; // channel 값을 7으로 한다.
+		System.out.println("채널 변경후 Tv t1 : ");
+		tvArr[0].printInfo();
+
+		tvArr[1].channelUp();
+		System.out.println("채널 변경후 Tv t2 : ");
+		tvArr[1].printInfo();
+		
+		tvArr[2].channel = 5;
+		System.out.println("Tv t3 : ");
+		tvArr[2].printInfo();
+		
+		tvArr[3].channel = 5;
+		tvArr[3].power();
+		tvArr[3].color = "yellow";
+		System.out.println("Tv t4 : ");
+		tvArr[3].printInfo();
+		
+		System.out.println("현재 상황");
+		for(int i = 0; i < tvArr.length; i++) {
+			System.out.println("Tv" + (i+1) + "번째");
+			tvArr[i].printInfo();
+		}
+	}
+
+}
