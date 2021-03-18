@@ -1,0 +1,36 @@
+package Chap6;
+
+public class Member {
+
+	public String name;
+	public String id;
+	public String password;
+	
+	public Member(){
+		
+	}
+	
+	Member(String id, String pw){
+		this.id = id;
+		this.password = pw;
+	}
+	void info() {
+		System.out.printf("\t%s\t%s\t%s\n", name, id, password);
+	}
+	public boolean login(String logId, String logPw) {
+		if(id.equals(logId) && password.equals(logPw)) {
+			System.out.println("["+ name + "]님 환영합니다");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean logout(String logId) {
+		if(id.equals(logId)) {
+			System.out.println("["+ id +"]님이 로그아웃 하였습니다.");
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
