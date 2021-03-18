@@ -1,0 +1,13 @@
+package Chap6;
+
+public class IDtest {
+
+	public static void main(String[] args) {
+
+		ID id = new ID("홍아기", "210318", "3", "홍길동", "이주영");
+		id.printInfo();
+		
+
+	}
+
+}
