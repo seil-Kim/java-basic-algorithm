@@ -1,0 +1,92 @@
+package Chap6;
+
+import java.util.*;
+
+public class Membertest {
+	
+	static Member[] member = new Member[5];
+	static Scanner scan = new Scanner(System.in);
+	static String id = null;
+	static String pw = null;
+
+	public static void main(String[] args) {
+
+		input();
+		boolean run = true;
+		while(run) {
+			System.out.println("\n===========================================");
+			System.out.println("\n*		작업 선택		*");
+			System.out.println("\n===========================================");
+			System.out.print("login: 1, logout: 2, 종료: 0 >>");
+			id = scan.next();
+			switch(id) {
+				case("1"):
+					loginCheck();
+					break;
+				case("2"):
+					logoutCheck();
+					break;
+				default:
+					run = false;
+			}
+		}
+		
+		
+	}
+
+	private static void input() {
+
+		for(int i = 0; i < 3; i++) {
+			System.out.printf("%d번째 아이디와 비밀번호를 입력하세요 >> ", i + 1);
+			id = scan.next();
+			pw = scan.next();
+			member[i] = new Member(id, pw);
+			System.out.print("이름을 입력하세요 >> ");
+			member[i].name = scan.next();
+		}
+		
+		System.out.println("\n---------------------------------------------------");
+		System.out.println("*		info()		*");
+		System.out.println("---------------------------------------------------");
+		System.out.println("\t이름\tID\tPassword");
+		System.out.println("---------------------------------------------------");
+		for(int i = 0; i < 3; i++) {
+			member[i].info();
+		}
+	}
+	
+	public static void loginCheck() {
+		System.out.println("\n---------------------------------------------");
+		System.out.println("*		login		");
+		System.out.println("---------------------------------------------");
+		System.out.print("id와 password를 입력하세요 >> ");
+		id = scan.next();
+		pw = scan.next();
+		int i = 0;
+		boolean result = false;
+		while( i < 3 && !result) {
+			result = member[i].login(id,  pw);
+			i++;
+		}
+		if(!result) {
+			System.out.println("회원정보가 없습니다");
+		}
+	}
+	public static void logoutCheck() {
+		System.out.println("\n---------------------------------------------");
+		System.out.println("*		logout		");
+		System.out.println("---------------------------------------------");
+		System.out.print("id를 입력하세요 >> ");
+		id = scan.next();
+		int i = 0;
+		boolean result = false;
+		while( i < 3 && !result) {
+			result = member[i].logout(id);
+			i++;
+		}
+		if(!result) {
+			System.out.println("회원정보가 없습니다");
+		}
+	}
+
+}
