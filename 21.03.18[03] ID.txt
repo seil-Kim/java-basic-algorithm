@@ -1,0 +1,29 @@
+package Chap6;
+
+class ID {
+	String name; // 이름
+	String fa; // 부 성명
+	String ma; // 모 성명
+	String id; // 주민등록번호
+	
+	ID(String name, String birth, String sex, String fa, String ma){
+		this.name = name;
+		this.fa = fa;
+		this.ma = ma;
+		String tmp = birth + "-" + sex;
+		
+		for(int i = 0; i < 6; i++) {
+			tmp += (int)(Math.random() * 10);
+		}
+		this.id = tmp;
+	}
+	
+	
+	void printInfo() {
+	System.out.println("** 아기의 탄생을 축하 !!! **");
+	System.out.println("아기이름 : " + this.name);
+	System.out.println("주민번호 : " + this.id);
+	System.out.println("아빠 성명 : " + this.fa);
+	System.out.println("엄마 성명 : " + this.ma);
+	}
+}
