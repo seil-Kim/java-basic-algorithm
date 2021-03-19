@@ -1,0 +1,25 @@
+package Chap6;
+
+public class Score {
+	
+	int bunho;
+	String name;
+	int kor;
+	int eng;
+	int su;
+	int tot;
+	int ave;
+	
+	static int hakbun = 202100;
+	
+	Score(){ }
+	Score(String name) {
+		this.bunho = ++hakbun;
+		this.name = name;
+	}
+	public void calcu() {
+		tot = kor + eng + su;
+		ave = tot / 3;
+	}
+
+}
