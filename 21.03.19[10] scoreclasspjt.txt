@@ -1,0 +1,38 @@
+package Chap6;
+
+import java.util.Scanner;
+
+public class ScoreClassPjt {
+	
+	static String[] title = {"국어", "영어", "수학"};
+	static Score[] score = new Score[5];
+	
+	public static void main(String[] args) {
+
+		String[] ireum = {"홍길동", "김지수", "정안나", "하희라", "한민수"};
+		
+		Scanner scan = new Scanner(System.in);
+		for(int i = 0; i < score.length; i++) {
+			score[i] = new Score(ireum[i]);
+			System.out.printf("%s 학생의 국어, 영어, 수학 점수를 입력 >> ", score[i].name);
+			score[i].kor = scan.nextInt();
+			score[i].eng = scan.nextInt();
+			score[i].su = scan.nextInt();
+			score[i].calcu();
+		}
+		PrintRtn();
+	}
+		static void PrintRtn() {
+			System.out.println("\t *********** 성적일람표 **********\n");
+			System.out.println("-----------------------------------------------------");
+			System.out.print("번호\t이름");
+			for(String s : title) System.out.printf("\t%s", s);
+			System.out.println("\t총점\t평균");
+			System.out.println("-----------------------------------------------------");
+			for(int i = 0; i < score.length; i++) {
+				System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%d\n",
+					score[i].bunho, score[i].name, score[i].kor, score[i].eng,
+					score[i].su, score[i].tot, score[i].ave);
+			}
+		}
+	}
