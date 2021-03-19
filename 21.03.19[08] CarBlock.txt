@@ -1,0 +1,37 @@
+package Chap6;
+
+class Car {
+	static int count;
+	int serialNo;
+	String color;
+	String gearType;
+	
+	static { // 한 번만 실행
+		count++;
+	}
+	{ // 인스턴스 생성시마다 실행
+		count++;
+		serialNo = count;
+	}
+	Car() {
+		color = "White";
+		gearType = "Auto"; 
+	}
+	Car(String c, String g, int s) {
+		color = c;
+		gearType = g;
+		serialNo = s;
+	}
+}
+
+public class CarBlock {
+
+	public static void main(String[] args) {
+
+		Car c1 = new Car();
+		System.out.printf("count = %d serialNo = %d\n", Car.count, c1.serialNo);
+		Car c2 = new Car("blue", "Manual", 10);
+		System.out.printf("count = %d serialNo = %d\n", Car.count, c2.serialNo);
+	}
+
+}
