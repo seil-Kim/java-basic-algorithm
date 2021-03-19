@@ -1,0 +1,19 @@
+package Chap6;
+
+import java.util.*;
+
+public class StringTokenizer1 {
+
+	public static void main(String[] args) {
+		String str = "오렌지 사과 배 복숭아";
+		StringTokenizer st = new StringTokenizer(str);
+		
+		while(st.hasMoreTokens()) {
+			System.out.println(st.nextToken());
+		}
+		System.out.println();
+		
+
+	}
+
+}
