@@ -1,0 +1,69 @@
+package chap7;
+
+public class FigureAereaEx {
+
+	public static void main(String[] args) {
+		Figure11 fc = new CircleFigure11();
+		Figure11 ft = new TriFigure11();
+		Figure11 fq = new QuadFigure11();
+		
+		Figure11.titlePrint();
+		
+		float a = fc.area();
+		fc.print("원", a);
+		
+		a = ft.area();
+		ft.print("삼각형", a);
+		
+		a = fq.area();
+		fq.print("사각형", a);
+
+		
+	}
+
+}
+
+interface Figure11{
+	//상수
+	public float PI = 3.141592f;
+	
+	//추상 메소드 : method의 선언부만 작성할 것
+	public float area();
+	
+	//디폴트 메소드 : 실행 내용까지 작성
+	default void print(String s, float a) {
+		System.out.printf("%s의 넓이는 %7.1f 입니다.\n", s, a);
+	}
+	
+	//정적 메소드
+	static void titlePrint() {
+		System.out.println("*** 도형의 넓이 계산 ***");
+	}
+}
+
+class CircleFigure11 implements Figure11{
+	float r = 10f;
+	
+	@Override
+	public float area() {
+		return r * r * PI;
+	}
+}
+
+class TriFigure11 implements Figure11{
+	float[] x = {15f, 20f};
+	
+	@Override
+	public float area() {
+		return x[0] * x[1] / 2;
+	}
+}
+
+class QuadFigure11 implements Figure11{
+	float[] x = {10f, 20f};
+	
+	@Override
+	public float area() {
+		return x[0] * x[1];
+	}
+}
