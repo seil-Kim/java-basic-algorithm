@@ -1,0 +1,31 @@
+package chap9;
+
+import java.util.*;
+import java.util.regex.Pattern;
+
+public class RegularExpression3 {
+
+	public static void main(String[] args) {
+
+		System.out.println("이메일을 입력하세요 >> ");
+		Scanner scanner = new Scanner(System.in);
+		String data = null;
+		Boolean result;
+		String regExp = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
+		
+		while(true) {
+			data = scanner.nextLine();
+			if(data.equals("e")) break;
+			result = Pattern.matches(regExp, data);
+			if(result) {
+					System.out.println("정규식과 일치합니다.");
+			}
+			else {
+				System.out.println("정규식과 일치하지 않습니다.");
+			}
+		}
+		
+
+	}
+
+}
