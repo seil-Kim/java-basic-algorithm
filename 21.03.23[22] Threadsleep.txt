@@ -1,0 +1,23 @@
+package chap13;
+
+import java.util.Scanner;
+
+public class Threadsleep {
+
+	public static void main(String[] args) throws Exception {
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("타이머 세팅 시간(분) 입력 >>");
+		int bun = scanner.nextInt();
+		int time = bun * 60;
+		for(int i = time; i >= 0; i--) {
+			int m = i / 60;
+			int s = i % 60;
+			
+			Thread.sleep(1000);
+			System.out.println(m + "분" +s+ "초 남음");
+		}
+		System.out.println("-- Time Over --");
+	}
+
+}
