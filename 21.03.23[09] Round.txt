@@ -1,0 +1,18 @@
+package chap9;
+
+import static java.lang.Math.*;
+
+public class Round {
+
+	public static void main(String[] args) {
+
+		double val = 90.7552;
+		float result = round(val * 100) / (float)100;
+		System.out.println("round(90.7552,2) = " + result);
+		double r = rint(-1.5);
+		long i = round(-1.5);
+		System.out.println("rint(-1.5) = " + r +", round(-1.5) = " + i);
+
+	}
+
+}
