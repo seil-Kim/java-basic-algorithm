@@ -1,0 +1,15 @@
+package chap9;
+
+public class IntegerParse {
+
+	public static void main(String[] args) {
+
+		int val8 = Integer.valueOf("11", 8);
+		int val16 = Integer.parseInt("FF", 16);
+		
+		System.out.println("val8 = " + val8);
+		System.out.println("val16 = " + val16);
+
+	}
+
+}
