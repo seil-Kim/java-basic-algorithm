@@ -1,0 +1,68 @@
+package chap11;
+
+import java.util.*;
+
+public class ArrayListEx {
+
+	public static void main(String[] args) {
+
+		ArrayList<String> list1 = new ArrayList<String>(10);
+		list1.add("e");
+		list1.add("c");
+		list1.add("a");
+		list1.add("d");
+		list1.add("b");
+		
+		ArrayList<String> list2 = new ArrayList<String>(list1.subList(1, 4));
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		
+		System.out.println();
+		
+		Collections.sort(list1);	// list1과 list2를 정렬한다.
+		Collections.sort(list2);
+		
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		
+		System.out.println();
+		
+		System.out.println("list2 item add");
+		
+		list2.add("B");
+		list2.add("C");
+		list2.add(3, "A");
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		
+		System.out.println();
+		
+		list2.set(3, "AA");
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		
+		System.out.println();
+		
+		// list1에서 list2와 겹치는 부분만 남기고 나머지는 삭제한다.
+		System.out.println("list1.retainAll(list2):" + list1.retainAll(list2));
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		
+		System.out.println();
+		
+		// list2에서 list1에 포함된 객체들을 삭제한다.
+		System.out.println("list2.removeAll(list1):" + list2.removeAll(list1));
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+				
+		System.out.println();
+		
+	}// main의 끝
+	
+	static void print(ArrayList<String> list1, ArrayList<String> list2) {
+		System.out.println("list1:"+list1);
+		System.out.println("list2:"+list2);
+		System.out.println();
+	}
+
+}
