@@ -1,0 +1,27 @@
+package chap7;
+
+class Parentob{
+	int compute(int num) {
+		if(num <= 1)
+			return num;
+		return compute(num - 1) + compute(num - 2);
+	}
+}
+class Childob extends Parentob{
+	int compute(int num) {
+		if(num <= 1)
+			return num;
+		return compute(num - 1) + compute(num - 3);
+	}
+}
+
+public class obj {
+
+	public static void main(String[] args) {
+
+		Parentob obj = new Childob();
+		System.out.println(obj.compute(4));
+		
+	}
+
+}
