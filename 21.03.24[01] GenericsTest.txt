@@ -1,0 +1,20 @@
+package chap13;
+
+public class GenericsTest {
+
+	public static void main(String[] args) {
+
+		// Stu<Integer> stu = new Stu<>();
+		// stu.bunho = 202101;
+		Stu<String> stu = new Stu<>();
+		stu.bunho = "202101";
+		stu.name = "홍길동";
+		System.out.println(stu.bunho + " : " + stu.name);
+
+	}
+
+}
+class Stu<T>{
+	T bunho;
+	String name;
+}
