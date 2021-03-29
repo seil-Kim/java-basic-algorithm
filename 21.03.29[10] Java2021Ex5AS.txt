@@ -1,0 +1,22 @@
+package Test01AS;
+
+import java.util.*;
+
+public class Java2021Ex5AS {
+
+	public static void main(String[] args) {
+
+		String juminNO = "";
+		Scanner scan = new Scanner(System.in);
+		System.out.println("생년월일을 yymmdd 형식으로 입력 : ");
+		juminNO = scan.nextLine() + "-";
+		System.out.println("성별을 남자는 3, 여자는 4로 입력 : ");
+		juminNO += scan.nextLine();
+		
+		for(int i = 0; i < 6; i++) {
+			juminNO += (int)(Math.random() * 10);
+		}
+		System.out.println("주민등록번호 : "+juminNO);
+	}
+
+}
