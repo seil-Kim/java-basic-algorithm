@@ -1,0 +1,20 @@
+package Test01;
+
+import java.util.*;
+
+public class Java2021_Ex1 {
+
+	public static void main(String[] args) {
+
+		System.out.println("숫자 x와 n을 입력하여주세요 >> ");
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int n = scan.nextInt();
+		
+		int re = x >> n;
+		
+		System.out.println("결과 : "+re);
+
+	}
+
+}
