@@ -1,0 +1,22 @@
+package Test01;
+
+import java.util.*;
+
+public class Java2021_Ex5 {
+
+	public static void main(String[] args) {
+
+		System.out.println("생년월일 6자리를 입력하세요 >> ");
+		Scanner scan = new Scanner(System.in);
+		int ymd = scan.nextInt();
+		System.out.println("성별 남(3), 여(4)를 입력하세요 >> ");
+		int sex = scan.nextInt();
+		String tmp = ymd + "-" + sex;
+		
+		for(int i = 0; i < 6; i++) {
+			tmp += (int)(Math.random() * 10);
+		}
+		System.out.println("주민등록번호는"+tmp+"입니다.");
+	}
+
+}
