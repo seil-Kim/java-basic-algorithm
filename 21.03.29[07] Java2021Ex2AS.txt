@@ -1,0 +1,36 @@
+package Test01AS;
+
+import java.util.*;
+
+class POINT{
+	int x, y;
+	POINT(){};
+	POINT(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}
+
+public class Java2021Ex2AS {
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		System.out.println("점의 좌표 x와 y를 입력 : ");
+		int x = scan.nextInt();
+		int y = scan.nextInt();
+		POINT p1 = new POINT(x,y);
+		System.out.println("이동 거리 x와 y를 입력 : ");
+		x = scan.nextInt();
+		y = scan.nextInt();
+		POINT p2 = new POINT(x,y);
+		POINT ap = afterPoint(p1,p2);
+		System.out.printf("점(%d,%d)를 (%d,%d,만큼 이동한 후의 점의 좌표는 (%d,%d)\n	", p1.x, p1.y, p2.x, p2.y, ap.x, ap.y);
+	}
+static POINT afterPoint(POINT p1, POINT p2) {
+	POINT new_p = new POINT();
+	new_p.x = p1.x + p2.x;
+	new_p.y = p1.y + p2.y;
+	return new_p;
+	}
+}
