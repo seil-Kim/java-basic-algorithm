@@ -1,0 +1,34 @@
+package Test01;
+
+import java.util.*;
+
+public class Java2021_Ex2 {
+
+	public static void main(String[] args) {
+		
+		System.out.println("점의 좌표 x,y를 입력하세요 >> ");
+		Scanner scan = new Scanner(System.in);
+		int a = scan.nextInt();
+		int b = scan.nextInt();
+
+		Point xy = new Point(a,b);
+		System.out.println("점의 좌표는 x:"+a+", y:"+b+"입니다.");
+		xy.method();
+	}
+
+}
+class Point{
+	int x, y;
+	Point(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	void method() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("이동 거리 x,y를 입력하세요 >> ");
+		int c = scan.nextInt();
+		int d = scan.nextInt();
+		System.out.println("이동 후의 점의 좌표는 x :"+(x+c)+"y : "+(y+d)+"입니다.");
+	}
+	
+}
