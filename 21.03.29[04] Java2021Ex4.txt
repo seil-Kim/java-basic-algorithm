@@ -1,0 +1,20 @@
+package Test01;
+
+import java.util.StringTokenizer;
+
+public class Java2021_Ex4 {
+
+	public static void main(String[] args) {
+
+		String str = "3,27,14,9,8,25,36,10,42,18";
+		StringTokenizer st = new StringTokenizer(str, ",");
+		int sum = 0;
+		
+		while(st.hasMoreTokens()) {
+			sum += Integer.parseInt(st.nextToken());
+		}
+		System.out.printf("문자열의 합 : %d",sum);
+
+	}
+
+}
