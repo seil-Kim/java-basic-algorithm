@@ -1,0 +1,226 @@
+package Project01;
+
+import java.util.*;
+
+public class BankSystem {
+	public int idx;
+	public int search_idx;
+	public Customer[] custA = new Customer[100];
+	public Scanner scanner = new Scanner(System.in);
+	public int inputInt() {return scanner.nextInt();}
+	public String inputStr() {return scanner.next();}
+
+   public static void main(String[] args) {
+	   BankSystem bapp = new BankSystem();
+	   bapp.menu();	
+      }
+   
+public void menu() {
+	
+    System.out.println("BankSystem Ver. 1.1");
+    System.out.println("====================");
+    System.out.println("[1] 고객 정보 입력");
+    System.out.println("[2] 입금 처리");
+    System.out.println("[3] 출금 처리");
+    System.out.println("[4] 고객 정보 조회");
+    System.out.println("[5] 전 고객 정보 출력");
+    System.out.println("[6] 프로그램 종료");
+    System.out.println("====================");
+    System.out.println("Select Menu : ");
+    
+    int selecNo = inputInt();
+    
+    switch(selecNo) {
+    	case 1:
+    		System.out.println("고객 정보 입력");
+    		addCust();
+    		break;
+    	case 2:
+    		System.out.println("입금 처리");
+    		addBalance();
+    		break;
+    	case 3:
+    		System.out.println("출금 처리");
+    		subBalance();
+    		break;
+    	case 4:
+    		System.out.println("고객 정보 조회");
+    		printCust();
+    		break;
+    	case 5:
+    		System.out.println("전 고객 정보 출력");
+    		printAll();
+    		break;
+    	case 6:
+    		System.out.println("프로그램을 종료합니다.");
+    		System.exit(0);
+    		break;
+    }
+    menu();
+}
+public void addCust() {
+	
+	System.out.print("\nID를 입력하세요: ");
+	String id = inputStr();
+	String pw = null, pw2 = null;
+	boolean result = searchId(id);
+	if(result) {
+		System.out.println("이미 가입된 계정 입니다.");
+	}else {
+		do {
+			System.out.print("PW를 입력하세요: ");
+			pw = inputStr();
+			System.out.print("PW를 재입력하세요: ");
+			pw2 = inputStr();
+		}while(!pw.equals(pw2));
+		
+		System.out.print("이름을 입력하세요: ");
+		String name = inputStr();
+		System.out.print("금액을 입력하세요: ");
+		int balance = inputInt();
+		System.out.print("우수고객 등록(y/n) : ");
+		String vip = null;
+		boolean vip_checked = false;
+		
+		do {
+			vip = inputStr();
+			
+			switch(vip) {
+			case"Y":
+			case"y":
+				vip = "우수고객";
+				vip_checked = true;
+				break;
+			case"N":
+			case"n":
+				vip = "일반고객";
+				vip_checked = true;
+				break;
+			default:
+				System.out.println("잘못 입력, 다시 입력하세요");
+			}
+		}while(vip_checked == false);
+		Customer cust = new Customer();
+		cust.setID(id);
+		cust.setPw(pw);
+		cust.setVip(vip);
+		cust.setBalance(balance);
+		cust.setName(name);
+		
+		custA[idx++] = cust;
+	}
+	System.out.println("\n");
+}
+public boolean searchId(String arg_id) {
+	boolean result = false;
+	for(int i = 0; i < idx; i++) {
+		if(custA[i].getID().equals(arg_id)) {
+			result = true;
+			break;
+		}
+	}
+	return(result);
+}
+public boolean addBalance() {
+	Customer customer = search();
+	if(customer.getID() != null) {
+		int balance = customer.getBalance();
+		System.out.println("현재 잔액 : "+ balance);
+		System.out.print("금액을 입력하세요: ");
+		int input_balance = inputInt();
+		balance += input_balance;
+		custA[search_idx].setBalance(balance);
+		System.out.println("입금 후 잔액 : "+ balance);
+	}
+	return false;
+}
+public Customer search() {
+	System.out.print("\nID를 입력하세요: ");
+	String id = inputStr();
+	System.out.print("PW를 입력하세요: ");
+	String pw = inputStr();
+	
+	Customer customer = null;
+	int result = 0;
+	for(int i = 0; i < idx; i++) {
+		if(custA[i].getID().equals(id)) {
+			if(custA[i].getPw().equals(pw)) {
+				customer = custA[i];
+				search_idx = i;
+				result = 1;
+			}else {
+				System.out.println("암호가 틀렸습니다.");
+				result = 2;
+			}
+			break;
+		}
+	}
+	if(result == 0) {
+		System.out.println("해당 ID가 존재하지 않습니다");
+	}
+	return(customer);
+}
+public boolean subBalance() {
+	Customer customer = search();
+	int input_balance;
+	if(customer.getID() != null) {
+		int balance = custA[search_idx].getBalance();
+		System.out.println("현재 잔액 : "+ balance);
+		
+		do {
+			System.out.print("금액을 입력하세요: ");
+			input_balance = inputInt();
+			if(input_balance > balance) {
+				System.out.println("금액이 잔액 보다 큽니다.");
+			}
+		}while(input_balance > balance);
+		int cost = (custA[search_idx].getVip().equals("우수고객"))? 0 : 500;
+		balance = balance - input_balance - cost;
+		custA[search_idx].setBalance(balance);
+		System.out.println("수수료 : "+ cost);
+		System.out.println("출금 후 잔액 : "+ balance);
+	}
+	return false;
+}
+public void printCust() {
+	boolean result = true;
+	Customer customer = search();
+	do {
+		if(customer.getID() != null) {
+			titlePrint();
+			custInfo(customer);
+		}
+		System.out.println("\n계속하시겠습니까? (y/n)");
+		String yn = inputStr();
+		if(yn.equals("y") || yn.equals("Y")) {
+			printCust();
+		}else {
+			result = false;
+		}
+	}while(result != false);
+	
+	menu();
+}
+public void printAll() {
+	titlePrint();
+	for(int i = 0; i < idx; i++) {
+		custInfo(custA[i]);
+	}
+	System.out.println("\n");
+}
+public void titlePrint() {
+	System.out.println("\n");
+	System.out.println("\n\t\t고 객  정 보");
+	System.out.println("=====================");
+	System.out.println("ID\t 이름\t 금액 \tVIP");
+	System.out.println("=====================");
+}
+
+public void custInfo(Customer c) {
+	System.out.println(c.getID()+"\t");
+	System.out.println(c.getName()+"\t");
+	System.out.println(c.getBalance()+"\t");
+	System.out.println(c.getVip()+"\t");
+	System.out.println();
+}
+}
