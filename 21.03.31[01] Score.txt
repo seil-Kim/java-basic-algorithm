@@ -1,0 +1,23 @@
+package Project02;
+
+public class Score extends Name {
+	
+	int kor;
+	int eng;
+	int su;
+	int tot;
+	float ave;
+	
+	Score(){}
+	Score(String name){
+		this.bunho = ++hakbun;
+		this.name = name;
+	}
+	public void calcu() {
+		tot = kor + eng + su;
+		ave = (float)tot/3;
+		
+	}
+	
+	
+}
