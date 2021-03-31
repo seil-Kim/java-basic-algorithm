@@ -1,0 +1,52 @@
+package Project02;
+
+import java.util.*;
+
+public class School {
+	
+	static String[] title = {"국어","영어","수학"};
+	static Score[] score = new Score[5];
+	public Scanner scanner = new Scanner(System.in);
+	static int korave = 0;
+	static int engave = 0;
+	static int suave = 0;
+	static float totave = 0;
+
+	public static void main(String[] args) {
+				
+		String[] ireum = {"홍길동", "김지수", "정안나", "하희라", "한민수"};
+		Scanner scanner = new Scanner(System.in);
+		for(int i = 0; i < score.length; i++) {
+			score[i] = new Score(ireum[i]);
+			System.out.printf("%s 학생의 국어, 영어, 수학 점수를 입력 >> ", score[i].name);
+			score[i].kor = scanner.nextInt();
+			score[i].eng = scanner.nextInt();
+			score[i].su = scanner.nextInt();
+			score[i].calcu();
+		}
+		for(int i = 0; i < score.length; i++) {
+			korave += score[i].kor;
+			engave += score[i].eng;
+			suave += score[i].su;
+			totave = (korave + engave + suave);
+		}
+		PrintRtn();
+	}
+	static void PrintRtn() {
+			System.out.println("\t*********** 성적 일람표 ***********\n");
+			System.out.println("-----------------------------------------------------");
+			System.out.print(" 번호\t이름");
+			for(String s : title) System.out.printf("\t%s", s);
+			System.out.println("\t총점\t평균");
+			System.out.println("-----------------------------------------------------");
+			for(int i = 0; i < score.length; i++) {
+				System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%2.1f\n",
+						score[i].bunho, score[i].name, score[i].kor, score[i].eng,
+						score[i].su, score[i].tot, score[i].ave);
+			}
+			System.out.println("-----------------------------------------------------");
+			System.out.printf(" \t과목평균\t%d\t%d\t%d\t\t%2.1f\n", korave/5, engave/5, suave/5, totave/5/3);
+			System.out.println("-----------------------------------------------------");
+		}
+
+}
