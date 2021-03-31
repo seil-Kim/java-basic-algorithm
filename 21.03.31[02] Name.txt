@@ -1,0 +1,10 @@
+package Project02;
+
+public class Name {
+	
+		String name;
+		int bunho;
+		
+		static int hakbun = 202100;
+		
+}
