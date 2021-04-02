@@ -1,0 +1,20 @@
+package Project05;
+
+public class Hakjuk {
+	
+	static int studentCount;
+	static int haksaBunho = 202100;
+	private int bunho;
+	private String name;
+	
+	public Hakjuk(String name){
+		this.bunho = ++ haksaBunho;
+		this.name = name;
+	}
+	
+	public int getBunho() {return bunho;}
+	public void setBunho(int bunho) {this.bunho = bunho;}
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
+	
+}
