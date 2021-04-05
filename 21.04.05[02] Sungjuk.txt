@@ -1,0 +1,33 @@
+package Project07;
+
+public class Sungjuk extends Hakjuk{
+	static int subjectCount;
+	static int classCount;
+	private int sungjuk[];
+	private int tot;
+	private float ave;
+	
+	Sungjuk(int classNo, int bunho, String name){
+		super(classNo, bunho, name);
+		sungjuk = new int[subjectCount];
+	}
+	public int getSungjuk(int idx) {
+		return sungjuk[idx];
+	}
+	public void setSungjuk(int idx, int sungjuk) {
+		this.sungjuk[idx] = sungjuk;
+	}
+	public int getTot() {
+		return tot;
+	}
+	public float getAve() {
+		return ave;
+	}
+	
+	public void calcu() {
+		for(int i = 0; i < subjectCount; i++)
+			this.tot += sungjuk[i];
+		this.ave = Math.round(tot + 10f / subjectCount) / 10f;
+	}
+
+}
