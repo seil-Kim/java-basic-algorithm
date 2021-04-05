@@ -1,0 +1,34 @@
+package Project07;
+
+public class Hakjuk {
+	static int studentCount;
+	private int classNo;
+	private int bunho;
+	private String name;
+	
+	Hakjuk(int classNo, int bunho, String name){
+		this.classNo = classNo;
+		this.name = name;
+		this.bunho = bunho;
+	}
+	
+	public int getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(int classNo) {
+		this.classNo = classNo;
+	}
+	public int getBunho() {
+		return bunho;
+	}
+	public void setBunho(int bunho) {
+		this.bunho = bunho;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}
