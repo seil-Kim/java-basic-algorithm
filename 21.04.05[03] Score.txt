@@ -1,0 +1,189 @@
+package Project07;
+
+import java.util.*;
+
+public class Score extends Sungjuk {
+	
+	Score(int classNo, int bunho, String name){
+		super(classNo, bunho, name);
+	}
+	
+	static String[] title;
+	static float[][] gwaTot;
+	static float classTot[];
+	static int idx = 0;
+	static float allTotal = 0;
+	static Vector<Score> score = new Vector<Score>();
+	public static Scanner scanner = new Scanner(System.in);
+	public static int inputInt() {
+		return scanner.nextInt();
+	}
+	public static String inputStr() {
+		return scanner.next();
+	}
+	public static String inputStrln() {
+		return scanner.nextLine();
+	}
+	
+
+	public static void main(String[] args) {
+
+		System.out.println("\n << 성적처리 초기화 >> ");
+		System.out.println("=====================");
+		System.out.println("학급수 : ");
+		classCount = inputInt();
+		System.out.println("학생수 : ");
+		studentCount = inputInt();
+		System.out.println("과목수 : ");
+		subjectCount = inputInt();
+		System.out.println("과목명 : ");
+		title = new String[subjectCount];
+		for(int i = 0; i < subjectCount; i++)
+			title[i] = inputStr();
+		gwaTot = new float[classCount+1][subjectCount];
+		classTot = new float[classCount];
+		System.out.println("=====================");
+		inputStrln();
+		menu();
+
+	}
+	
+	public static void menu() {
+		System.out.println("\n << 성적처리 시스템 >> ");
+		System.out.println("=====================");
+		System.out.println(" [1] 학적 관리");
+		System.out.println(" [2] 성적 입력");
+		System.out.println(" [3] 개인별 성적 조회");
+		System.out.println(" [4] 학급별 성적일람표 출력");
+		System.out.println(" [5] 학년 전체 성적일람표 출력");
+		System.out.println(" [6] 프로그램 종료");
+		System.out.println("=====================");
+		System.out.println(" Select Menu : ");
+		String selectStr = inputStrln();
+		
+		switch(selectStr) {
+			case "1":
+				System.out.println("학적 관리");
+				hakjukMan();
+				break;
+			case "2":
+				System.out.println("성적 입력");
+				inputSungjuk();
+				break;
+			case "3":
+				System.out.println("개인별 성적 조회");
+				searchSungjuk();
+				break;
+			case "4":
+				System.out.println("학급별 성적일람표 출력");
+				printBanSungjuk();
+				break;
+			case "5":
+				System.out.println("학년 전체 성적일람표 출력");
+				printAllSungjuk();
+				break;
+			case "6":
+				System.out.println("프로그램을 종료합니다.");
+				System.exit(0);
+				break;
+			default:
+				System.out.println("잘못된 번호입니다.");
+		}
+		menu();
+	}
+	private static void hakjukMan() {
+		for(int ban = 1; ban <= studentCount; ban++) {
+			for(int n = 1; n <= studentCount; n++) {
+				System.out.printf("%d반 %d번의 이름을 입력하세요 : ", ban, n);
+				score.add(new Score(ban, n, inputStrln()));
+			}
+		}
+	}
+	private static void inputSungjuk() {
+		if(!score.isEmpty()) {
+			for(int ban = 0; ban < studentCount; ban++) {
+				for(int n = 0; n < studentCount; n++) {
+					idx = ban * classCount + n;
+					for(int j = 0; j < subjectCount; j++) {
+						System.out.printf("%s의 %s과목 성적을 입력하세요 : ", score.get(idx).getName(), title[j]);
+					score.get(idx).setSungjuk(j,  inputInt());
+					gwaTot[ban][j] += score.get(idx).getSungjuk(j);
+					gwaTot[classCount][j] += score.get(idx).getSungjuk(j);
+					}
+					score.get(idx).calcu();
+					classTot[ban] += score.get(idx).getTot();
+				}
+			}
+		}else {
+			System.out.println("학적 관리부터 하세요");
+		}
+	}
+	private static void searchSungjuk() {
+		System.out.print("조회할 학생의 학번(3자)를 입력하세요 : ");
+		int searchHakbun = inputInt();
+		int searchBan = (searchHakbun / 100) - 1;
+		int searchBun = (searchHakbun % 100) - 1;
+		idx = (searchBan) * classCount + searchBun;
+		if(searchBan > classCount || searchBun > studentCount)
+			return;
+		TitlePrint();
+		ScorePrint(idx);
+		PrintBar();
+	}
+	public static void ScorePrint(int i) {
+		System.out.printf("%d%02d\t%s\t", score.get(i).getClassNo(), score.get(i).getBunho(), score.get(i).getName());
+		for(int j = 0; j < subjectCount; j++)
+			System.out.printf("%3d\t", score.get(i).getSungjuk(j));
+		System.out.printf("%3d\t%4.1f\n", score.get(i).getTot(), score.get(i).getAve());
+	}
+	public static void printBanSungjuk() {
+		System.out.print("출력할 학급을 입력하세요 : ");
+		int ban = inputInt();
+		TitlePrint();
+		classPrint(ban - 1);
+	}
+	public static void classPrint(int ban) {
+		for(int i = 0; i < studentCount; i++) {
+			ScorePrint(ban * studentCount + i);
+		}
+		TotalPrint(ban);
+	}
+	public static void TotalPrint(int ban) {
+		int tot = 0;
+		PrintBar();
+		System.out.print("학급 평균\t");
+		for(int n = 0; n < subjectCount; n++) {
+			tot += gwaTot[ban][n];
+			System.out.printf("\t%4.1f", gwaTot[ban][n]/studentCount);
+		}
+		System.out.printf("\t%3d\t%4.1f\n", tot, (float)tot / studentCount / subjectCount);
+	}
+	public static void printAllSungjuk() {
+		System.out.println("\n");
+		int allTotal = 0;
+		TitlePrint();
+		for(int n = 0; n < classCount; n++) {
+			classPrint(n);
+		}
+		System.out.print("학년 평균\t");
+		for(int n = 0; n < subjectCount; n++) {
+			allTotal += gwaTot[classCount][n];
+			System.out.printf("\t%4.1f", gwaTot[classCount][n] / classCount / studentCount);
+		}
+		System.out.printf("\t%3d\t%4.1f\n", allTotal, (float)allTotal / studentCount / subjectCount / classCount);
+		PrintBar();
+	}
+	public static void TitlePrint() {
+		System.out.println("\t *********** 성적일람표 ***********\n");
+		PrintBar();
+		System.out.print(" 번호\t이름");
+		for(String s : title) System.out.printf("\t%s", s);
+		System.out.println("\t총점\t평균");
+		PrintBar();
+	}
+	public static void PrintBar() {
+		for(int i = 0; i < 55; i++)
+			System.out.print("-");
+		System.out.println();
+	}
+}
